@@ -104,7 +104,6 @@ public class TransactionServiceImpl implements TransactionService{
 
 	@Override
 	public boolean validtransaction1(long accountNo) throws ResourceNotFoundException, TransactionLimitOverException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
