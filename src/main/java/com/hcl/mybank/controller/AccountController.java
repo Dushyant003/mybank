@@ -1,31 +1,20 @@
 package com.hcl.mybank.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.hcl.mybank.dto.AccountsDetailsDto;
 import com.hcl.mybank.serviceimpl.TransactionServiceImpl;
-
-
 @RestController
 @RequestMapping("")
+@CrossOrigin(origins = "*")
 public class AccountController {
-	
-	
-	
-	
-
-	
 	@Autowired
 	TransactionServiceImpl transactionServiceImpl;
 	
@@ -34,6 +23,4 @@ public class AccountController {
 		
 		return transactionServiceImpl.getTransactionDetails(id);
 	}
-
-
 }
