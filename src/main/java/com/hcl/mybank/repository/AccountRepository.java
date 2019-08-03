@@ -11,6 +11,6 @@ import com.hcl.mybank.entity.Account;
 @Repository
 public interface AccountRepository  extends JpaRepository<Account, Long>{
 
-	public List<AccountSummaryDto> findAnalysisReportWeekly();
+	public List<AccountSummaryDto> findUserSummary();
 
 }
