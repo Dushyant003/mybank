@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hcl.mybank.dto.TransactionDto;
 import com.hcl.mybank.entity.Transaction;
 import com.hcl.mybank.exception.ResourceNotFoundException;
+import com.hcl.mybank.exception.TransactionLimitOverException;
 import com.hcl.mybank.service.AccountService;
 import com.hcl.mybank.service.TransactionService;
 
@@ -39,5 +40,12 @@ public class AccountController {
 	{
 		return new ResponseEntity<>(accountService.accountSummary(customerId),HttpStatus.OK);
 	}
+	
+	@GetMapping("/account/transaction/verify/{accountNo}")
+	public ResponseEntity<Object> verifyAccount(@RequestParam("accountNo") long accountNo) throws ResourceNotFoundException, TransactionLimitOverException
+	{
+		return new ResponseEntity<>(transactionService.validtransaction(accountNo),HttpStatus.OK);
+	}
+
 
 }

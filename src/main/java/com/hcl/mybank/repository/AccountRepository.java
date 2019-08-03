@@ -13,8 +13,8 @@ import com.hcl.mybank.entity.Account;
 public interface AccountRepository  extends JpaRepository<Account, Long>{
 
 
-	@Query("")
-	public List<AccountSummaryDto> findUserSummary();
+	//@Query("")
+	//public List<AccountSummaryDto> findUserSummary();
 
 
 
