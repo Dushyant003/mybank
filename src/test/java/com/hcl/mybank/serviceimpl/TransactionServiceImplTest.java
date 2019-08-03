@@ -1,7 +1,5 @@
 package com.hcl.mybank.serviceimpl;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.time.LocalDate;
 import java.util.Optional;
 
