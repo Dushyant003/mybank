@@ -3,6 +3,7 @@ package com.hcl.mybank.serviceimpl;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,6 @@ public class TransactionServiceImpl implements TransactionService{
 	
 	@Autowired
 	AccountRepository accountRepository;
-
 	
 	@Autowired
 	TransactionRepository transactionRepository;
@@ -33,9 +33,23 @@ public class TransactionServiceImpl implements TransactionService{
 	public Transaction fundTransfer(TransactionDto transactionDto) {
 		Optional<Account> fromAccountDetails=accountRepository.findById(transactionDto.getFromAccountId());
 		Optional<Account> toAccountDetails=accountRepository.findById(transactionDto.getToAccountId());
-		
+		Transaction transaction;
 		
 		Boolean validate=	validateFundTransfer(transactionDto);
+		
+		if(validate) {
+			transaction=new Transaction();
+			BeanUtils.copyProperties(transactionDto, transaction);
+			transaction.setFromAccount(fromAccountDetails.get());
+			transaction.setToAccount(toAccountDetails.get());
+			transaction.setTransactionAmount(transactionDto.getAmount());
+			transaction.setTransactionDate(LocalDateTime.now());
+			transaction.setTransactionDescription(transactionDto.getTransactionDescription());
+			transaction.setTransactionType("CR");
+			
+			
+			
+		}
 		
 		
 		return null;
