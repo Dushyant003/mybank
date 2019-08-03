@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.mybank.dto.TransactionDto;
-import com.hcl.mybank.entity.Transaction;
 import com.hcl.mybank.exception.ResourceNotFoundException;
 import com.hcl.mybank.service.AccountService;
 import com.hcl.mybank.service.TransactionService;
@@ -29,11 +28,11 @@ public class AccountController {
 	AccountService accountService;
 	
 	@PostMapping("/fundtransfer")
-	public void fundTransfer(@RequestBody TransactionDto transactionDto) {
-	  Transaction transactionDetails=	transactionService.fundTransfer(transactionDto);
-		
-		
+	public ResponseEntity<Object> fundTransfer(@RequestBody TransactionDto transactionDto) throws ResourceNotFoundException {
+		return new ResponseEntity<>(transactionService.fundTransfer(transactionDto),HttpStatus.OK);		
 	}
+	
+	
 	@GetMapping("/summary")
 	public ResponseEntity<Object> summary(@RequestParam long customerId) throws ResourceNotFoundException
 	{
