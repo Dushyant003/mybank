@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hcl.mybank.dto.AccountSummaryDto;
-import com.hcl.mybank.entity.Account;
 import com.hcl.mybank.entity.Customer;
 import com.hcl.mybank.exception.ResourceNotFoundException;
 import com.hcl.mybank.repository.AccountRepository;

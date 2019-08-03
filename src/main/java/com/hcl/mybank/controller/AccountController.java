@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.mybank.dto.AccountsDetailsDto;
+import com.hcl.mybank.dto.ResponseDto;
 import com.hcl.mybank.dto.TransactionDto;
 import com.hcl.mybank.exception.ResourceNotFoundException;
 import com.hcl.mybank.service.AccountService;
@@ -50,8 +51,7 @@ public class AccountController {
 		return new ResponseEntity<>(accountService.accountSummary(customerId),HttpStatus.OK);
 	}
 	@GetMapping("/beneficiaryDetails")
-	public ResponseEntity<Object> beneficiaryDetails(@RequestParam long accountId) throws ResourceNotFoundException
-	{
-		return new ResponseEntity<>(accountService.beneficiaryDetails(accountId),HttpStatus.OK);
+	public ResponseEntity<Object> beneficiaryDetails(@RequestParam long accountId) throws ResourceNotFoundException	{
+		return new ResponseEntity<>(new ResponseDto("sucess",200,accountService.beneficiaryDetails(accountId)),HttpStatus.OK);
 	}
 }
