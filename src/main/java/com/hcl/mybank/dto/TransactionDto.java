@@ -8,9 +8,9 @@ import lombok.Data;
 public class TransactionDto {
 	
 	@NotNull
-	private Long fromAccount;
+	private Long fromAccountId;
 	@NotNull
-	private Long toAccount;
+	private Long toAccountId;
 	@NotNull
 	private Double amount;
 	@NotNull

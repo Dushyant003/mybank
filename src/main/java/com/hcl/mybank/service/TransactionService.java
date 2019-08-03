@@ -9,7 +9,7 @@ import com.hcl.mybank.entity.Transaction;
 public interface TransactionService {
 
 	Transaction fundTransfer(TransactionDto transactionDto);
-	
+	 
 	
 
 }
