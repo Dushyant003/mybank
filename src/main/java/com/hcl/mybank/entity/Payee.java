@@ -1,7 +1,5 @@
 package com.hcl.mybank.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,29 +10,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name="payee")
-public class Payee implements Serializable {
+@Data
+public class Payee {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="payee_id")
-	@Getter
-	@Setter
 	private Long payeeId;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="account_id")
-	@Getter
-	@Setter
 	private Account accountId;
 	
 	@OneToOne(fetch = FetchType.EAGER)

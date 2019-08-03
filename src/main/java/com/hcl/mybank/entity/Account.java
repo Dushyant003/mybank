@@ -12,12 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import lombok.Data;
 
 @Entity
 @Table(name="account")
 @Data
-public class Account {
+
+public class Account  {
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
