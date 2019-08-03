@@ -35,7 +35,7 @@ public class AccountController {
 	
 	@PostMapping("/fundtransfer")
 	public ResponseEntity<Object> fundTransfer(@RequestBody TransactionDto transactionDto) throws ResourceNotFoundException {
-		return new ResponseEntity<>(transactionServiceImpl.fundTransfer(transactionDto),HttpStatus.OK);		
+		return new ResponseEntity<>(transactionService.fundTransfer(transactionDto),HttpStatus.OK);		
 	}
 	
 	
