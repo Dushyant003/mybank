@@ -16,7 +16,7 @@ public class SwaggerConfig {
 	    public Docket apiDocket() {
 	        return new Docket(DocumentationType.SWAGGER_2)
 	                .select()
-	                .apis(RequestHandlerSelectors.basePackage("com.hcl.hclinsure.controller"))
+	                .apis(RequestHandlerSelectors.basePackage("com.hcl.mybank.controller"))
 	                .paths(PathSelectors.any())
 	                .build();
 	    }
