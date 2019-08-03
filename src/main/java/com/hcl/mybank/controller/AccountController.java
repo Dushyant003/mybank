@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.mybank.dto.AccountsDetailsDto;
-import com.hcl.mybank.service.TransactionService;
 import com.hcl.mybank.serviceimpl.TransactionServiceImpl;
 
 @RestController
