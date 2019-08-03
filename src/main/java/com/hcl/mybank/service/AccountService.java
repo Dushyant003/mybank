@@ -11,4 +11,5 @@ import com.hcl.mybank.exception.ResourceNotFoundException;
 public interface AccountService {
 
 	public List<AccountSummaryDto> accountSummary(long customerId) throws ResourceNotFoundException;
+	public List<Long> beneficiaryDetails(long accountId) throws ResourceNotFoundException;
 }
