@@ -20,6 +20,7 @@ import com.hcl.mybank.dto.ErrorResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
+	private String errorMessage="Server Error";
 	@Override
 	    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		 List<String> details = new ArrayList<>();
@@ -34,8 +35,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	    public final ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {   
 		 List<String> details = new ArrayList<>();
 	        details.add(ex.getMessage());	        
-	        return new ResponseEntity<>(new ErrorResponse("Server Error", details,Integer.toString(301)), HttpStatus.NOT_FOUND);
+	        return new ResponseEntity<>(new ErrorResponse(errorMessage, details,Integer.toString(301)), HttpStatus.NOT_FOUND);
 	    }
-	
+
+	@ExceptionHandler(TransactionLimitOverException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	    public final ResponseEntity<ErrorResponse> handleTransactionLimitOverException(TransactionLimitOverException ex, WebRequest request) {   
+		 List<String> details = new ArrayList<>();
+	        details.add(ex.getMessage());	        
+	        return new ResponseEntity<>(new ErrorResponse(errorMessage, details,Integer.toString(301)), HttpStatus.NOT_FOUND);
+	    }
+
 	
 }
