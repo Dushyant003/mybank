@@ -1,5 +1,6 @@
 package com.hcl.mybank.serviceimpl;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.hcl.mybank.dto.TransactionDto;
 import com.hcl.mybank.entity.Account;
 import com.hcl.mybank.entity.Transaction;
+import com.hcl.mybank.exception.ResourceNotFoundException;
 import com.hcl.mybank.repository.AccountRepository;
 import com.hcl.mybank.repository.TransactionRepository;
 import com.hcl.mybank.service.TransactionService;
@@ -21,7 +23,6 @@ public class TransactionServiceImpl implements TransactionService{
 	
 	@Autowired
 	TransactionRepository transactionRepository;
-
 	
 	@Override
 	public Transaction fundTransfer(TransactionDto transactionDto) {
@@ -48,10 +49,15 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 	
 	
-	 public boolean validtransaction(long accountNo)
+	 public boolean validtransaction(long accountNo) throws ResourceNotFoundException
 	   {
-		 
-			 return true;
+		   Account account=accountRepository.findById(accountNo).orElseThrow(()->new ResourceNotFoundException("account not exist"));
+	       	  	if(transactionRepository.findByFromAccountAndTransactionDate(account, LocalDateTime.now())>=account.getTransactionLimit()) {
+	       	  		
+	       	  	}
+		   
+		   
+		   return true;
 	    }
 
 }
