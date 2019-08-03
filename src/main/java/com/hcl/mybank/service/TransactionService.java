@@ -11,7 +11,8 @@ import com.hcl.mybank.exception.ResourceNotFoundException;
 public interface TransactionService {
 
 	Transaction fundTransfer(TransactionDto transactionDto);
+
 	public boolean validtransaction(long accountNo) throws ResourceNotFoundException;
-	
+
 
 }
