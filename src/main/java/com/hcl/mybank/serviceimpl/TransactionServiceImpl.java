@@ -1,8 +1,8 @@
 package com.hcl.mybank.serviceimpl;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.hcl.mybank.dto.AccountsDetailsDto;
 import com.hcl.mybank.dto.ResponseDto;
 import com.hcl.mybank.dto.TransactionDto;
 import com.hcl.mybank.entity.Account;
@@ -24,10 +25,10 @@ import com.hcl.mybank.service.TransactionService;
 public class TransactionServiceImpl implements TransactionService{
 	
 	@Autowired
-	AccountRepository accountRepository;
+	TransactionRepository transactionRepository;
 	
 	@Autowired
-	TransactionRepository transactionRepository;
+	AccountRepository accountRepository;
 	
 	@Value("${minimumBalance}")
 	private long minimumBalance;
@@ -81,5 +82,16 @@ public class TransactionServiceImpl implements TransactionService{
 	       return new ResponseDto("sucess",200,true);
 	       
 	    }
+
+
+	public List<AccountsDetailsDto> getTransactionDetails(long id) {
+		return transactionRepository.getAccountsDetails(id);
+	}
+
+	@Override
+	public boolean validtransaction1(long accountNo) throws ResourceNotFoundException, TransactionLimitOverException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
