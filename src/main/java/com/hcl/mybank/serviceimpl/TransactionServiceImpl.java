@@ -3,6 +3,7 @@ package com.hcl.mybank.serviceimpl;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,12 +100,14 @@ public class TransactionServiceImpl implements TransactionService{
 
 
 	public List<AccountsDetailsDto> getTransactionDetails(long id) {
-		return transactionRepository.getAccountsDetails(id);
+		List<AccountsDetailsDto> list =transactionRepository.getAccountsDetails(id);
+	return list.stream().limit(10).collect(Collectors.toList());
+				
+		
 	}
 
 	@Override
 	public boolean validtransaction1(long accountNo) throws ResourceNotFoundException, TransactionLimitOverException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

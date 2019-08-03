@@ -24,10 +24,3 @@ import com.hcl.mybank.entity.Customer;
 
 
 
-//	@Query("")
-	//public List<AccountSummaryDto> findUserSummary();
-	/*
-	 * @Query("") public List<AccountSummaryDto> findUserSummary();
-	 */
-
-
