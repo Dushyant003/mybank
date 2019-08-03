@@ -32,7 +32,7 @@ public class Account {
 	private Double balance;
 	
 	@Column(name="account_type")
-	private Double accountType;
+	private String accountType;
 	
 	@Column(name="transaction_limit")
 	private Double transactionLimit;
