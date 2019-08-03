@@ -1,7 +1,7 @@
 package com.hcl.mybank.serviceimpl;
 
-
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -79,16 +79,22 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 	
 	
-	 public boolean validtransaction(long accountNo) throws ResourceNotFoundException, TransactionLimitOverException
+	 public ResponseDto validtransaction(long accountNo) throws ResourceNotFoundException, TransactionLimitOverException
 	   {
-		   Account account=accountRepository.findById(accountNo).orElseThrow(()->new ResourceNotFoundException("account not exist"));
-	       	  	if(transactionRepository.getFromAccountAndTransactionDate(account, LocalDateTime.now())>=account.getTransactionLimit()) {
+		 Account account=accountRepository.findById(accountNo).orElseThrow(()->new ResourceNotFoundException("account not exist")); 
+		 if(null!=transactionRepository.getFromAccountAndTransactionDate(account, new Date()))	  
+	       {
+	    	   if(transactionRepository.getFromAccountAndTransactionDate(account, new Date())>=account.getTransactionLimit()) {
 	                throw new TransactionLimitOverException("transaction limit exceeded");    	  		
 	       	  	}
 	       	  	if(account.getBalance()<minimumBalance) {
 	       	  	throw new TransactionLimitOverException("insufficient balance");
 	       	  	}
-		   return true;
+		   
+	       }
+	       
+	       return new ResponseDto("sucess",200,true);
+	       
 	    }
 
 
