@@ -32,6 +32,12 @@ public class Transaction {
 	@JoinColumn(name="to_account")
 	private Account toAccount;
 	
+	@Column(name="transaction_amount")
+	private Double transactionAmount;
+	
 	@Column(name="transaction_date")
 	private LocalDateTime transactionDate;
+	
+	@Column(name="transaction_description")
+	private String transactionDescription;
 }

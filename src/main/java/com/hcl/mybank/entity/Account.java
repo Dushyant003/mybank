@@ -34,6 +34,8 @@ public class Account {
 	@Column(name="account_type")
 	private Double accountType;
 	
+	@Column(name="transaction_limit")
+	private Double transactionLimit;
 	
 	
 
