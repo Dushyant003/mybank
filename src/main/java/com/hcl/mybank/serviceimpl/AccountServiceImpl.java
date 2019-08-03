@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hcl.mybank.dto.AccountSummaryDto;
+import com.hcl.mybank.entity.Account;
 import com.hcl.mybank.entity.Customer;
+import com.hcl.mybank.entity.Payee;
 import com.hcl.mybank.exception.ResourceNotFoundException;
 import com.hcl.mybank.repository.AccountRepository;
 import com.hcl.mybank.repository.CustomerRepository;
@@ -25,6 +27,13 @@ public class AccountServiceImpl implements AccountService{
 	public List<AccountSummaryDto> accountSummary(long customerId) throws ResourceNotFoundException {
 	Customer customer=customerRepository.findById(customerId).orElseThrow(()->new ResourceNotFoundException("customer not found"));
 		return accountRepository.findUserSummary(customer);
+	}
+	
+	@Override
+	public List<Payee> beneficiaryDetails(long accountId) throws ResourceNotFoundException {
+		Account account=accountRepository.findById(accountId).orElseThrow(()->new ResourceNotFoundException("customer not found"));
+		
+		return accountRepository.findByAccountId(account);
 	}
 	
 	

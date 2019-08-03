@@ -36,4 +36,9 @@ public class AccountController {
 	{
 		return new ResponseEntity<>(accountService.accountSummary(customerId),HttpStatus.OK);
 	}
+	@GetMapping("/beneficiaryDetails")
+	public ResponseEntity<Object> beneficiaryDetails(@RequestParam long accountId) throws ResourceNotFoundException
+	{
+		return new ResponseEntity<>(accountService.beneficiaryDetails(accountId),HttpStatus.OK);
+	}
 }
