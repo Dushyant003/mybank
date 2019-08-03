@@ -35,6 +35,13 @@ public class TransactionServiceImpl implements TransactionService{
 		if(validate) {
 			transaction=new Transaction();
 			BeanUtils.copyProperties(transactionDto, transaction);
+			transaction.setFromAccount(fromAccountDetails.get());
+			transaction.setToAccount(toAccountDetails.get());
+			transaction.setTransactionAmount(transactionDto.getAmount());
+			transaction.setTransactionDate(LocalDateTime.now());
+			transaction.setTransactionDescription(transactionDto.getTransactionDescription());
+			transaction.setTransactionType("CR");
+			
 			
 			
 		}

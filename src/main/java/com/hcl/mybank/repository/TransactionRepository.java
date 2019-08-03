@@ -1,6 +1,5 @@
 package com.hcl.mybank.repository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.data.jpa.repository.JpaRepository;

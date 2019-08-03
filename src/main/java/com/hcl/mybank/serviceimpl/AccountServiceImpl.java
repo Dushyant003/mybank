@@ -18,7 +18,8 @@ public class AccountServiceImpl implements AccountService{
 	
 	@Override
 	public List<AccountSummaryDto> accountSummary(long customerId) throws ResourceNotFoundException {
-		return accountRepository.findUserSummary();
+		//return accountRepository.findUserSummary();
+		return null;
 	}
 	
 	

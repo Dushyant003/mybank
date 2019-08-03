@@ -29,9 +29,9 @@ public class Payee {
 	@JoinColumn(name="account_id")
 	private Account accountId;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="payee_account_id")
-	private List<Account> payeeAccountId;
+	private Account payeeAccountId;
 	
 	
 
