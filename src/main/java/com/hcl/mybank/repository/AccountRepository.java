@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.hcl.mybank.dto.AccountSummaryDto;
 import com.hcl.mybank.entity.Account;
 import com.hcl.mybank.entity.Customer;
-import com.hcl.mybank.entity.Payee;
 
 @Repository
 	public interface AccountRepository  extends JpaRepository<Account, Long>{
@@ -18,7 +17,9 @@ import com.hcl.mybank.entity.Payee;
 		Account findByCustomerId(Customer customer);
 		@Query("select new com.hcl.mybank.dto.AccountSummaryDto(a.customerId.customerName,a.accountType,a.balance,a.accountId) FROM Customer c , Account a where a.customerId.customerId=c.customerId and a.customerId=:customerId")
 		public List<AccountSummaryDto> findUserSummary(@Param("customerId")Customer customer);
-		public List<Payee> findByAccountId(Account account);
+		
+	 	@Query("select a.accountId from Account a where a.accountId!=:accountno")
+		public List<Long> findByAccountIdNot(@Param("accountno") long accountno);
 	}
 
 
