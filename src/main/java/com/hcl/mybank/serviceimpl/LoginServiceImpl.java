@@ -26,7 +26,6 @@ public class LoginServiceImpl  implements LoginService{
 
 	@Override
 	public Customer loginUser(LoginDto customerDto) {
-		System.out.println("data"+customerRepository.findByCustomerIdAndPassword(customerDto.getCustomerId(), customerDto.getPassword()));
 	   return customerRepository.findByCustomerIdAndPassword(customerDto.getCustomerId(), customerDto.getPassword());
 	}
 

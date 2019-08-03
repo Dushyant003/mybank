@@ -13,8 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name="payee")
+@Data
 public class Payee {
 	
 	@Id
@@ -26,9 +29,9 @@ public class Payee {
 	@JoinColumn(name="account_id")
 	private Account accountId;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="payee_account_id")
-	private List<Account> payeeAccountId;
+	private Account payeeAccountId;
 	
 	
 

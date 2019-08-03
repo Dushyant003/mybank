@@ -12,8 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name="account")
+@Data
 public class Account {
 	
 	@Id
@@ -32,8 +35,10 @@ public class Account {
 	private Double balance;
 	
 	@Column(name="account_type")
-	private Double accountType;
+	private String accountType;
 	
+	@Column(name="transaction_limit")
+	private Double transactionLimit;
 	
 	
 
