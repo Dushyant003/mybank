@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,11 +23,11 @@ public class Payee {
 	private Long payeeId;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@Column(name="account_id")
+	@JoinColumn(name="account_id")
 	private Account accountId;
 	
 	@OneToMany(fetch = FetchType.EAGER)
-	@Column(name="payee_account_id")
+	@JoinColumn(name="payee_account_id")
 	private List<Account> payeeAccountId;
 	
 	

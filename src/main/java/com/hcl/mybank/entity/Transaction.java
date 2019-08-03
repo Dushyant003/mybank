@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,11 +25,11 @@ public class Transaction {
 	private String transactionType;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@Column(name="from_account")
+	@JoinColumn(name="from_account")
 	private Account fromAccount;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@Column(name="to_account")
+	@JoinColumn(name="to_account")
 	private Account toAccount;
 	
 	@Column(name="transaction_date")
