@@ -1,9 +1,9 @@
 package com.hcl.mybank.serviceimpl;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.hcl.mybank.dto.TransactionDto;
 import com.hcl.mybank.entity.Account;
@@ -17,6 +17,7 @@ public class TransactionServiceImpl implements TransactionService{
 	@Autowired
 	AccountRepository accountRepository;
 
+	
 	@Override
 	public Transaction fundTransfer(TransactionDto transactionDto) {
 		Optional<Account> fromAccountDetails=accountRepository.findById(transactionDto.getFromAccountId());
@@ -33,5 +34,12 @@ public class TransactionServiceImpl implements TransactionService{
 		
 		return null;
 	}
+	
+	
+	 public boolean validtransaction(long accountNo)
+	   {
+		 
+			 return true;
+	    }
 
 }
